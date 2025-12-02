@@ -1,27 +1,4 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/xzV997kL)
-# Nueva y moderna religión: 
-
-Entre rezos y esperanza, pero adaptada a los tiempos actuales
-
-# Antes de comenzar...
-
-Decidimos incluir pocos archivos en el repositorio, para garantizar compatibilidad entre distintas versiones de Wollok.
-Al clonar, tenerlo en cuenta.
-
-## Aclaraciones sobre el parcial
-
-- El parcial es **individual** y se entrega **pusheando a este repositorio** como en las entregas anteriores. Recomendamos _ir pusheando cada cierto tiempo_ para evitar inconvenientes, lo ideal es después de cada punto resuelto, o cada 15 minutos.
-- No se tendrán en cuenta los commits realizados después de la hora de finalización del examen.
-- Una vez hecho el _push_ final, **verifiquen en github.com** que haya quedado la versión final. Nosotros corregiremos lo que está en github, si ustedes lo pueden ver ahí entonces nosotros también.
-- No olvidarse de **los conceptos aprendidos**: polimorfismo, delegación, buenas abstracciones, no repetir lógica, guardar vs calcular, lanzar excepción cuando un método no puede cumplir con su responsabilidad, etc. Eso es lo que se está evaluando.
-- La solución del examen consiste en la **implementación de un programa** que resuelva los requerimientos pedidos y sus **tests automatizados**.
-- Este enunciado es acompañado con un archivo `.wtest` que tiene diseñados los test a realizar. Es importante aclarar que:
-  - Un mínimo de tests se proponen para facilitar el desarrollo. Se puede diseñar otros si así se considera necesario.
-  - El conjunto de tests propuesto es suficiente para este ejercicio. No hace falta agregar nuevos, pero tampoco se prohíbe hacerlo.
-  - Todos los objetos allí usados se asumen como instancias de una clase. Si el diseño de la solución utiliza objetos bien conocidos en algunos casos entonces se debe remover la declaración de la variable y la línea en que se sugiere la instanciación
-  - Según el diseño de la solución, es probable que se requiera agregar más objetos a los sugeridos en los tests
-  - Los tests están comentados de manera de poder _ir incorporándolos a medida que se avanza_ con la solución del ejercicio
-
 ## Contexto 
 
 Se presenta la problemática de una iglesia ficticia, sin relación alguna con cualquier culto existente. Toda similitud con la realidad es pura coincidencia. El presente problema hipotético no tiene por objeto modelizar, y mucho menos rediculizar, ninguna religión existente.
