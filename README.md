@@ -127,11 +127,7 @@ _Atención! Prestar atención a la división de responsabilidades._
 
 _Consejos: Prestar atención! No duplicar código! cuidado con las ideas repetidas._
 
-## 4. El reformismo religioso v2: ¡Implementarlo te da más puntaje!
-
-_IMPORTANTE: no modificar lo realizado hasta el momento; se puede escribir código y explicación de las modificaciones que se realizarán, entre comentarios por ejemplo /* ... */, de forma de no "romper" todo lo diseñado anteriormente, en especial ... si no te alcanza el tiempo para terminarlo y probar todo lo nuevo._
-
-### Traducido, no es obligatorio escribir codigo ni tests de acá para adelante, pero tampoco se impide hacerlo
+## 4. El reformismo religioso v2
 
 1. Tras la desregulación de entidades religiosas, proponer la forma mediante la cual un religioso puede tener una nueva función, luego de realizar un curso de religión a distancia en la UAIP (Universidad de la asociación de iglesias posmodernas). De esta forma, un fraile podría convertirse además en sacerdote, haciendo el curso de sacerdote, por ejemplo (tendría ambos "títulos")
 2. Al cobrar el sueldo, sólo cobra el mejor sueldo de todas las funciones que posee. Por ejemplo si es monje y sacerdote al mismo tiempo, sólo cobrará el sueldo correspondiente a un sacerdote que es más alto.
@@ -141,15 +137,9 @@ _IMPORTANTE: no modificar lo realizado hasta el momento; se puede escribir códi
 6. Los fieles pueden solicitar un sacramento que sea otorgado por un religioso. Si el religioso no puede administrarlo, el programa actuará concordantemente.
    Y cuando el religioso puede dar sacramentos, simplemente lo administra (no definimos qué más ocurre por el momento, en un futuro se cobrará un arancel).
 
--Por el momento no se pide reformular las demás consultas.
-
->No es obligatoria la implementación de este apartado para la aprobación del examen
-
-## 5. Ideas futuras (fuera del parcial escrito y para proponer en un examen oral si se le pide)
+## 5. Ideas futuras
 
 1. La iglesia está pensando en pagar a un mismo religioso pero no sólo en pesos, sino en diferentes monedas; a veces pagaría en criptos, otras en pesos, etc etc. ¿Cómo se modifica el diseño?
 2. Arancelar la administración de sacramentos, lo recaudado irá a las arcas de la iglesia (mejor dicho a sus cuentas).
-
->Recuerde que este último punto 5 *no* es exigible para el presente examen
 
 
