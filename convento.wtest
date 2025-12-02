@@ -1,0 +1,228 @@
+import convento.*
+
+describe "Iglesia" {
+
+  // ==================== RELIGIOSOS ====================
+  // un monje de 65 años, lleva 15 meditando, usa talle 42, ora 180 minutos por dia, nunca fumó, y ahorra en dolares
+  const lucas = new Monje(
+    nombre = "Lucas",
+    edad = 65,
+    aniosMeditacion = 15,
+    talleHabito = 42,
+    esFumador = false,
+    monedaAhorro = dolaresAmericanos,
+    minutosDiariosOracion = 180
+  )
+
+    // Agregué esta instancia
+    const victorio = new Monje(
+    nombre = "Victorio",
+    edad = 75,
+    aniosMeditacion = 5,
+    talleHabito = 52,
+    esFumador = true,
+    monedaAhorro = pesosArgentinos,
+    minutosDiariosOracion = 25
+  )
+
+
+  // fraile de 25 años, recien recibido, 5 años de meditacion, talle 44, ora con suerte 10 minutos por dia, el resto del dia fuma, y ahorra en reli-criptos
+  const santi  = new Fraile(
+    nombre = "Santi",
+    edad = 25,
+    aniosMeditacion = 5,
+    talleHabito = 44,
+    esFumador = true,
+    monedaAhorro = relicriptos,
+    minutosDiariosOracion = 10
+  )
+
+  // Agregué esta instancia
+    const lorenzo  = new Fraile(
+    nombre = "Lorenzo",
+    edad = 95,
+    aniosMeditacion = 61,
+    talleHabito = 50,
+    esFumador = false,
+    monedaAhorro = relicriptos,
+    minutosDiariosOracion = 140
+  )
+  
+  // sacerdote de 95 años, 69 de meditación, talle  52, jamás lo vieron orar, fuma mucho y ahorra en pesos argentinos.
+  const carlos = new Sacerdote(
+    nombre = "Carlos",
+    edad = 95,
+    aniosMeditacion = 69,
+    talleHabito = 52,
+    esFumador = true,
+    monedaAhorro = pesosArgentinos,
+    minutosDiariosOracion = 0
+  )
+
+  // Agregué esta instancia
+    const marco = new Sacerdote(
+    nombre = "Marco",
+    edad = 50,
+    aniosMeditacion = 69,
+    talleHabito = 52,
+    esFumador = true,
+    monedaAhorro = pesosArgentinos,
+    minutosDiariosOracion = 0
+  )
+
+
+
+  // ==================== TESTS DE FRAILES ====================
+  
+  test "Fraile joven y experimentado" {
+    assert.that(santi.esJoven())
+    assert.that(santi.esExperimentado())
+    assert.that(santi.puedeAdministrarSacramentos())
+  }
+  
+  test "Fraile no joven (mayor a 90)" {
+    assert.notThat(lorenzo.esJoven())
+    assert.notThat(lorenzo.puedeAdministrarSacramentos())
+  }
+  
+  test "Fraile es buen religioso" {
+    assert.that(lorenzo.esBuenReligioso())
+    assert.notThat(santi.esBuenReligioso())
+  }
+  
+  test "Fraile es disciplinado" {
+    assert.that(lorenzo.esDisciplinado())
+    assert.notThat(santi.esDisciplinado())
+  }
+  
+  test "Fraile es resiliente si es experimentado" {
+    assert.that(lorenzo.esResiliente())
+    assert.notThat(santi.esResiliente()) // No es experimentado
+  }
+  
+  test "Fraile es pobre si tiene poco dinero" {
+    assert.that(santi.esPobre()) // No tiene dinero ahorrado
+    santi.recibirPago(11000000) // Le pago 11 millones (100 relicriptos)
+    assert.notThat(santi.esPobre()) // Ya no es pobre
+  }
+  
+  test "Fraile cobra sueldo basico mas 10% si es buen religioso" {
+    assert.equals(110000, santi.sueldo()) // 100000 + 10% = 110000
+  }
+
+
+  // ==================== TESTS DE MONJES ====================
+  
+  test "Monje joven hasta 70 años" {
+    assert.notThat(victorio.esJoven()) // 75 años
+    assert.that(lucas.esJoven()) // 65 años
+  }
+  
+  test "Monje experimentado con 10 o mas años de meditacion" {
+    assert.that(lucas.esExperimentado())
+    assert.notThat(victorio.esExperimentado())
+  }
+  
+  test "Monje nunca hace sacramentos" {
+    assert.notThat(lucas.puedeAdministrarSacramentos())
+    assert.notThat(victorio.puedeAdministrarSacramentos())
+  }
+  
+  test "Monje siempre es pobre" {
+    assert.that(lucas.esPobre())
+    lucas.recibirPago(500000000) // Le pago 500 millones
+    assert.that(lucas.esPobre()) // Sigue siendo pobre
+  }
+  
+  test "Monje es disciplinado solo si es joven" {
+    assert.notThat(victorio.esDisciplinado())
+    assert.that(lucas.esDisciplinado())
+  }
+  
+  test "Monje es resiliente si es viejo" {
+    assert.that(victorio.esResiliente())
+    assert.notThat(lucas.esResiliente())
+  }
+  
+  test "Monje cobra mitad del convenio mas plus de vestimenta" {
+    // Victorio: talle 52 (grande) = 50000 * 1.10 = 55000 (pero es fumador y no ora 30 min)
+    assert.equals(55000, victorio.sueldo())
+    // Lucas: talle 42 (comun) = 55000 * 1.05 = 57750
+    assert.equals(57750, lucas.sueldo())
+  }
+
+  // ==================== TESTS DE SACERDOTES ====================
+  
+  test "Sacerdote joven hasta 65 años" {
+    assert.that(marco.esJoven())
+    assert.notThat(carlos.esJoven())
+  }
+  
+  test "Sacerdote siempre es experimentado" {
+    assert.that(carlos.esExperimentado())
+    assert.that(marco.esExperimentado())
+  }
+  
+  test "Sacerdote siempre hace sacramentos" {
+    assert.that(carlos.puedeAdministrarSacramentos())
+    assert.that(marco.puedeAdministrarSacramentos())
+  }
+  
+  test "Sacerdote nunca es pobre" {
+    assert.notThat(carlos.esPobre())
+    assert.notThat(marco.esPobre())
+  }
+  
+  test "Sacerdote siempre es buen religioso" {
+    assert.that(carlos.esBuenReligioso())
+    assert.that(marco.esBuenReligioso())
+  }
+  
+  test "Sacerdote es disciplinado" {
+    assert.that(carlos.esDisciplinado())
+    assert.that(marco.esDisciplinado())
+  }
+  
+  test "Sacerdote es resiliente si es viejo" {
+    assert.notThat(marco.esResiliente())
+    assert.that(carlos.esResiliente())
+  }
+  
+  test "Sacerdote cobra convenio mas 50%" {
+    assert.equals(165000, carlos.sueldo()) // 110000 * 1.5 = 165000
+  }
+
+  // ==================== TESTS DE MONEDAS ====================
+  
+  test "Relicriptos cotizacion y mucho dinero" {
+    assert.equals(110000, relicriptos.cotizacion())
+    assert.that(relicriptos.tieneMuchoDinero(100))
+    assert.notThat(relicriptos.tieneMuchoDinero(99))
+  }
+  
+  test "Pesos argentinos cotizacion y mucho dinero" {
+    assert.equals(1, pesosArgentinos.cotizacion())
+    assert.that(pesosArgentinos.tieneMuchoDinero(3000001))
+    assert.notThat(pesosArgentinos.tieneMuchoDinero(3000000))
+  }
+  
+  test "Dolares americanos cotizacion y mucho dinero" {
+    assert.equals(1500, dolaresAmericanos.cotizacion())
+    assert.that(dolaresAmericanos.tieneMuchoDinero(2000))
+    assert.notThat(dolaresAmericanos.tieneMuchoDinero(1999))
+  }
+  
+  test "Religioso recibe pago y se convierte a su moneda" {
+    santi.dineroAhorrado(0)
+    santi.recibirPago(220000) // 220000 pesos
+    assert.equals(2, santi.dineroAhorrado()) // 220000 / 110000 = 2 relicriptos
+    
+    lucas.dineroAhorrado(0)
+    lucas.recibirPago(100000)
+    assert.equals(100000, lucas.dineroAhorrado()) // 100000 / 1 = 100000 pesos
+    
+    carlos.dineroAhorrado(0)
+    carlos.recibirPago(3000) // 3000 pesos
+    assert.equals(2, carlos.dineroAhorrado()) // 3000 / 1500 = 2 dolares
+  }
+}
